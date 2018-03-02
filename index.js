@@ -9,6 +9,8 @@ firebase.auth().onAuthStateChanged(function(user) {
 });
 
 
+
+
 var firename = document.getElementById("firename");
 
 var firebaseHeadingRef = firebase.database().ref().child("naam");
@@ -26,3 +28,22 @@ function logout(){
 });
 	
 }
+
+//////////
+// $(document).ready(function(){
+
+var markers = [];
+
+  var rootRef = firebase.database().ref().child("dangerCoods");
+  rootRef.on("child_added", snap => {
+    // var name = snap.child("Name").val();
+    // var email = snap.child("Email").val();
+    var coods = snap.child("coods").val();
+    window.markers.push(coods);
+    console.log(markers);    
+
+      // $("#table-body").append("<tr><td>" + name + "</td><td>"+ email + "</td><td><button>Remove</button></td></tr>");
+  });
+
+console.log(markers); 
+// });
