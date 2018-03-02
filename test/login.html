@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Firebase</title>
+</head>
+<body>
+
+<input type="email" placeholder="email" id="email_feild">
+<input type="password" placeholder="password" id="password_feild">
+<button onclick="login()">sign in</button>
+
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCE97n65jqiHMpI47BaFq7oUhvv2zesUfo",
+    authDomain: "driver-droid-web.firebaseapp.com",
+    databaseURL: "https://driver-droid-web.firebaseio.com",
+    projectId: "driver-droid-web",
+    storageBucket: "driver-droid-web.appspot.com",
+    messagingSenderId: "488886143607"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script type="text/javascript" src="login.js"></script>
+
+
+
+</body>
+</html>

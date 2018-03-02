@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Firebase</title>
+</head>
+<body>
+<textarea id="mainText" placeholder="enter text">
+</textarea>
+<button id="submitBtn" onclick="submitClick()">Send</button>
+
+
+
+
+
+
+
+<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCE97n65jqiHMpI47BaFq7oUhvv2zesUfo",
+    authDomain: "driver-droid-web.firebaseapp.com",
+    databaseURL: "https://driver-droid-web.firebaseio.com",
+    projectId: "driver-droid-web",
+    storageBucket: "driver-droid-web.appspot.com",
+    messagingSenderId: "488886143607"
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script type="text/javascript" src="index.js"></script>
+
+</body>
+</html>
