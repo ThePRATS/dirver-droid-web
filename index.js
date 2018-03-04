@@ -34,16 +34,26 @@ function logout(){
 
 var markers = [];
 
+function fetchAllDangerCoods() {
+  var def = $.Deferred();
   var rootRef = firebase.database().ref().child("dangerCoods");
   rootRef.on("child_added", snap => {
     // var name = snap.child("Name").val();
     // var email = snap.child("Email").val();
     var coods = snap.child("coods").val();
-    window.markers.push(coods);
-    console.log(markers);    
+    
+    def.resolve(window.markers.push(coods));
+     
 
       // $("#table-body").append("<tr><td>" + name + "</td><td>"+ email + "</td><td><button>Remove</button></td></tr>");
   });
+  return def.promise();
+}
 
-console.log(markers); 
+// let promise = fetchAllDangerCoods();
+
+fetchAllDangerCoods().then(function(){
+  console.log("the final then" + markers) 
+});
+// console.log("the final" + markers); 
 // });
