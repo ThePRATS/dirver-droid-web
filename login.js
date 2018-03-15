@@ -6,9 +6,6 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
-
-
-
 function login() {
 	var userEmail = document.getElementById("email_feild").value;
 	var userPass = document.getElementById("password_feild").value;

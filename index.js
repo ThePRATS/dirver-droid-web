@@ -8,17 +8,6 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
-
-
-
-var firename = document.getElementById("firename");
-
-var firebaseHeadingRef = firebase.database().ref().child("naam");
-firebaseHeadingRef.on('value',function(datasnapshot){
-	firename.innerText = datasnapshot.val();
-});
-
-
 function logout(){
 	firebase.auth().signOut().then(function() {
   // Sign-out successful.
@@ -34,26 +23,25 @@ function logout(){
 
 var markers = [];
 
-function fetchAllDangerCoods() {
-  var def = $.Deferred();
-  var rootRef = firebase.database().ref().child("dangerCoods");
-  rootRef.on("child_added", snap => {
-    // var name = snap.child("Name").val();
-    // var email = snap.child("Email").val();
-    var coods = snap.child("coods").val();
-    
-    def.resolve(window.markers.push(coods));
-     
+function getAllCoods(){
 
-      // $("#table-body").append("<tr><td>" + name + "</td><td>"+ email + "</td><td><button>Remove</button></td></tr>");
+  return new Promise((resolve,reject) => {
+    var rootRef = firebase.database().ref().child("dangerCoods");
+    rootRef.on("child_added", snap => {
+    var coods = snap.child("coods").val();
+    var iconImage = snap.child("iconImage").val();
+    var content = snap.child("content").val();
+    var cc = {"coods":coods, "iconImage":iconImage, "content": content};
+    window.markers.push(cc);
+    // console.log(markers)
+    resolve("done") 
+    });
   });
-  return def.promise();
 }
 
-// let promise = fetchAllDangerCoods();
+async function showMarkers(){
+  const pr = await getAllCoods();
+  console.log("the final then" + markers); 
+}
 
-fetchAllDangerCoods().then(function(){
-  console.log("the final then" + markers) 
-});
-// console.log("the final" + markers); 
-// });
+showMarkers();
