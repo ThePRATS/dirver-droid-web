@@ -1,6 +1,6 @@
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    javascript:window.location.href='index.html'
+    javascript:window.location.href='map-marker.html'
   } else {
 
   }
@@ -9,13 +9,13 @@ firebase.auth().onAuthStateChanged(function(user) {
 function login() {
 	var userEmail = document.getElementById("email_feild").value;
 	var userPass = document.getElementById("password_feild").value;
-	 // window.alert(userEmail + " " + userPass)
-		firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-	  		// Handle Errors here.
-	 	 	var errorCode = error.code;
-	  		var errorMessage = error.message;
-	  		window.alert("Error : " + errorMessage)
-			});
+	//window.alert(userEmail + " " + userPass)
+	firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
+  		// Handle Errors here.
+ 	 	var errorCode = error.code;
+  		var errorMessage = error.message;
+  		window.alert("Error : " + errorMessage)
+		});
 }
 
 function logout(){
